@@ -2,11 +2,11 @@ import {studentModel} from "../models/schemas/student.model";
 import {classroomModel} from "../models/schemas/classroom.model"
 
 export class StudentControllers {
-    static async getCreateNewStudentPage(req: any, res: any) {
+    static async newStudent(req: any, res: any) {
         const classrooms = await classroomModel.find()
         res.render("create",{classrooms: classrooms, student: {}});
     }
-    static async createNewStudent (req:any, res:any){
+    static async createStudent (req:any, res:any){
         try{
         const newStudent = new studentModel(req.body)
             if(newStudent){
@@ -17,7 +17,7 @@ export class StudentControllers {
             res.render("notfound")
         }
     }
-    static async getListStudentsPage (req:any, res:any){
+    static async listStudent (req:any, res:any){
         try{
             let query = {};
             if(req.body.classroom){
@@ -33,7 +33,7 @@ export class StudentControllers {
             res.render("notfound")
         }
     }
-    static async getUpdateStudentPage(req:any, res:any){
+    static async getUpdateStudent(req:any, res:any){
         try{
             const classrooms = await classroomModel.find();
             const studentNeedToUpdate = await studentModel.findOne ({_id: req.params.id}).populate({
