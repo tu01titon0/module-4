@@ -1,10 +1,10 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import { DataBase } from './src/models/data-source';
-import { router } from './src/routers/car.router';
+import { router } from './src/routers/app.router';
 
 const app = express();
-const PORT = 8888;
+const PORT = 3000;
 
 DataBase.connectDB()
         .then(() => console.log('DB Connected!'))

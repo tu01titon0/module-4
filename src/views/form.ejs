@@ -1,0 +1,62 @@
+<div class="row mb-4">
+    <div class="col-4">
+        <label class="">Tên</label>
+    </div>
+    <div class="col-8">
+        <input type="text" class="form-control col-8" value="<%= student.name%>" name="name">
+    </div>
+</div>
+<div class="row mb-4">
+    <div class="col-4">
+        <label class="">Lớp</label>
+    </div>
+    <div class="col-8">
+        <select type="text" class="form-select" name="classroom">
+            <option value="" disabled selected></option>
+            <% classrooms.forEach(item=>{%>
+                <% let slected = (student.classroom && item._id == student.classroom._id.toString()) ? "selected" : ""%>
+                <option value="<%=item._id%>" <%=slected%>><%=item.name%></option>
+            <%})%>
+        </select>
+    </div>
+</div>
+<div class="row mb-4">
+    <div class="col-4">
+        <label class="mb-2">Điểm lý thuyết</label>
+    </div>
+    <div class="col-8">
+        <input type="number" min="0" max="10" class="form-control" value="<%= student.pointTheoretical%>" name="pointTheoretical">
+
+    </div>
+</div>
+<div class="row mb-4">
+    <div class="col-4">
+        <label class="mb-2">Điểm thực hành</label>
+    </div>
+    <div class="col-8">
+        <input type="number" class="form-control" min="0" max="10" value="<%= student.pointPractice%>" name="pointPractice">
+    </div>
+</div>
+<div class="row mb-4">
+    <div class="col-4">
+        <label class="mb-2">Đánh giá</label>
+    </div>
+    <div class="col-8">
+        <input type="text" value="<%= student.evaluated%> " class="form-control" name="evaluated">
+    </div>
+</div>
+<div class="row mb-4">
+    <div class="col-4">
+        <label class="mb-2">Mô tả</label>
+    </div>
+    <div class="col-8">
+        <textarea type="text" class="form-control"  name="description" cols="30" rows="8"><%= student.description %></textarea>
+    </div>
+</div>
+<div class="row">
+    <div class="col-9"></div>
+    <div class="col-3">
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        <a type="submit"  class="btn btn-danger mt-3" href="/student/list">Thoát</a>
+    </div>
+</div>
